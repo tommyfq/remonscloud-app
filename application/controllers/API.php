@@ -29,6 +29,7 @@ class API extends CI_Controller {
   
   public function retrieveData(){
       $auth = $this->input->get_request_header('Authorization');
+      
       return false;
   }
 

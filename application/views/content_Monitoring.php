@@ -812,18 +812,17 @@
 
 
 		<div class="row" >
-				<div class="col-md-12">
-					<canvas id="canvas_day" width="2" height="1"></canvas>
-				</div>
+			<div class="col-md-6">
+				<canvas id="canvas_day_energy" width="2" height="1"></canvas>
+			</div>
+			<div class="col-md-6">
+				<canvas id="canvas_day_power" width="2" height="1"></canvas>
+			</div>
+
 		</div class="row">
-				<div class="col-md-12">
-					<canvas id="canvas_month" width="2" height="1"></canvas>
-				</div>
-		</div>
-		</div class="row">
-				<div class="col-md-12">
-					<canvas id="canvas_year" width="2" height="1"></canvas>
-				</div>
+			<div class="col-md-12">
+				<canvas id="canvas_year" width="2" height="1"></canvas>
+			</div>
 		</div>
     
 

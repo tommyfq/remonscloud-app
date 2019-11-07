@@ -1,50 +1,55 @@
 <script>
-var ctx = document.getElementById('canvas_day').getContext('2d');
 
-var chartConfig = {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+
+var dataLine = {
+        labels: <?php echo json_encode($label_day); ?>,
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+            label: 'Energi',
+            data: <?php echo json_encode($energy_data_daily); ?>,
+            backgroundColor: '#ff6384',
+            borderColor: '#ff6384',
+            borderWidth: 1,
+            fill:false,
         }]
-    },
-    options: {
-        responsive: true,
-        aspectRatio : 2
-        /*scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }*/
-    }
-};
-var myChart = new Chart(ctx,chartConfig);
+}
 
-var ctx2 = document.getElementById('canvas_month').getContext('2d');
-var myChart = new Chart(ctx2,chartConfig);
+var dataLine2 = {
+    labels: <?php echo json_encode($label_day); ?>,
+    datasets: [{
+        label: 'Daya',
+        data: <?php echo json_encode($power_data_daily); ?>,
+        backgroundColor: '#36a2eb',
+        borderColor: '#36a2eb',
+        borderWidth: 1,
+        fill:false,
+    }]
+}
 
-var ctx3 = document.getElementById('canvas_year').getContext('2d');
-var myChart = new Chart(ctx3,chartConfig);
+var optionsChart = {
+    responsive: true,
+    mainAspectRatio : true,
+    aspectRatio : 4
+}
 
+function start(){
+
+    var ctx = document.getElementById('canvas_day_energy').getContext('2d');
+    var myChart = new Chart(ctx,{
+        type: 'line',
+        data: dataLine,
+        options: optionsChart
+    });
+
+    var ctx2 = document.getElementById('canvas_day_power').getContext('2d');
+    var myChart = new Chart(ctx2,{
+        type: 'line',
+        data: dataLine2,
+        options: optionsChart
+    });
+
+    var ctx3 = document.getElementById('canvas_year').getContext('2d');
+    var myChart = new Chart(ctx3,chartConfig);
+}
+
+window.onload = start();
 </script>
